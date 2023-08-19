@@ -1,15 +1,29 @@
-import linkerPlugin from '@angular/compiler-cli/linker/babel';
-import { readFile } from 'fs/promises';
+import linkerPlugin from "@angular/compiler-cli/linker/babel";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { readFile } from "fs/promises";
 
-const babelConfig = JSON.parse(await readFile(new URL('./babel.config.json', import.meta.url)));
+const babelConfig = JSON.parse(
+  await readFile(new URL("./babel.config.json", import.meta.url))
+);
 
 export default {
   optimization: {
-    minimize: false,
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          enforce: true,
+          chunks: "all",
+        },
+      },
+    },
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: [".js", ".ts"],
   },
+
   module: {
     rules: [
       {
@@ -18,16 +32,19 @@ export default {
          * Exclude `node_modules` except the ones that need transpiling for IE11 compatibility.
          * Run `$ npx are-you-es5 check . -r` to get a list of those modules.
          */
-        exclude: '/node_modules',
+        exclude: "/node_modules",
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: Object.assign({}, babelConfig, {
             plugins: [linkerPlugin],
             compact: false,
             cacheDirectory: true,
-          })
-        }
+          }),
+        },
       }
-    ]
-  }
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin()
+  ],
 };
