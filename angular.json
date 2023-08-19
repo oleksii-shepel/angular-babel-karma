@@ -93,10 +93,6 @@
             "customWebpackConfig": {
               "path": "webpack.config.cjs"
             },
-            "headers": {
-              "Cross-Origin-Opener-Policy":"same-origin",
-              "Cross-Origin-Embedder-Policy":"require-corp"
-            },
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.cjs"
