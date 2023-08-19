@@ -18,7 +18,8 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.js",
+              "path": "webpack.config.cjs",
+              "replaceDuplicatePlugins": true,
               "mergeRules": {
                 "externals": "replace"
               }
@@ -81,11 +82,11 @@
           "builder": "@angular-builders/custom-webpack:karma",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.js"
+              "path": "webpack.config.cjs"
             },
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js"
+            "karmaConfig": "karma.conf.cjs"
           }
         }
       }
