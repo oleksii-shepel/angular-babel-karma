@@ -1,4 +1,3 @@
-const environment = require('./src/environments/environment');
 const babelConfig = require('./babel.config.json');
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: () => !environment.production,
+        test: () => true,
         sideEffects: true,
       },
       {
