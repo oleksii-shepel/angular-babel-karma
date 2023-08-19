@@ -4,6 +4,16 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
+    customHeaders: [{
+        match: /\.*$/,
+        name: 'Cross-Origin-Embedder-Policy',
+        value: 'require-corp'
+      }, {
+        match: /\.*$/,
+        name: 'Cross-Origin-Opener-Policy',
+        value: 'same-origin'
+      }
+    ],
     frameworks: ['jasmine', '@angular-devkit/build-angular', 'webpack'],
     plugins: [
       require('karma-jasmine'),
