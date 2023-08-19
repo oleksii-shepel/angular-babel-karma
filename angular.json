@@ -18,7 +18,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.mjs",
+              "path": "webpack.config.js",
               "mergeRules": {
                 "externals": "replace"
               }
@@ -81,7 +81,7 @@
           "builder": "@angular-builders/custom-webpack:karma",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.mjs"
+              "path": "webpack.config.js"
             },
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
