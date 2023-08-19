@@ -4,13 +4,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
   },
-
+  mode: 'production',
   module: {
     rules: [
-      {
-        test: () => true,
-        sideEffects: true,
-      },
       {
         test: /\.[jt]s$/,
         /**
