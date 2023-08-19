@@ -74,7 +74,11 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "angular-custom-webpack:build"
+            "browserTarget": "angular-custom-webpack:build",
+            "headers": {
+              "Cross-Origin-Opener-Policy":"same-origin",
+              "Cross-Origin-Embedder-Policy":"require-corp"
+            }
           }
         },
         "extract-i18n": {
@@ -87,7 +91,11 @@
           "builder": "@angular-builders/custom-webpack:karma",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.cjs"
+              "path": "webpack.config.cjs",
+              "headers": {
+                "Cross-Origin-Opener-Policy":"same-origin",
+                "Cross-Origin-Embedder-Policy":"require-corp"
+              }
             },
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
